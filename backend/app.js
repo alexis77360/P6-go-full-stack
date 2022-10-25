@@ -11,6 +11,9 @@ const app = express();
 const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
 
+//! ????????? cours 2 part 4
+const path = require('path'); 
+
 
 //? Connexion à la BDD
 mongoose.connect("mongodb+srv://alexfavdev:alexis20@cluster0.oyormvk.mongodb.net/?retryWrites=true&w=majority", {
@@ -32,6 +35,7 @@ app.use((req, res, next) => {
 });
 
 //? utiliser le router pour /api/stuff
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/stuff', stuffRoutes);
 app.use('/api/auth', userRoutes);
 
